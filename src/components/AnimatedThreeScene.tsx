@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SplineLoader from '@splinetool/loader';
 
 interface AnimatedThreeSceneProps {
@@ -24,11 +23,11 @@ export default function AnimatedThreeScene({
     const animationFrameRef = useRef<number>();
     const [isModelLoaded, setIsModelLoaded] = useState(false);
 
-    // 定义每个部分的目标旋转角度
+    // 定义每个部分的目标旋转角度 - 更新为新的section IDs
     const sectionRotations = {
-        'coca-cola': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1), // 左倾斜
-        'iconic-design': new THREE.Euler(0, -Math.PI * 0.45, Math.PI * 0.1), // 右倾斜
-        'sustainability': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1) // 左倾斜
+        'introduction': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1),
+        'schedule': new THREE.Euler(0, -Math.PI * 0.45, Math.PI * 0.1),
+        'requirements': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1)
     };
 
     // 初始化场景
@@ -38,6 +37,11 @@ export default function AnimatedThreeScene({
         // Scene
         const scene = new THREE.Scene();
         sceneRef.current = scene;
+
+        // 使用CSS变量设置背景色
+        const bgColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--background').trim();
+        scene.background = new THREE.Color(bgColor);
 
         // Camera
         const camera = new THREE.PerspectiveCamera(
@@ -51,15 +55,50 @@ export default function AnimatedThreeScene({
         cameraRef.current = camera;
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
         scene.add(ambientLight);
 
-        const mainLight = new THREE.DirectionalLight(0xffffff, 2);
-        mainLight.position.set(500, 500, 500);
+        const mainLight = new THREE.DirectionalLight(0xffffff, 3);
+        mainLight.position.set(500, 1000, 500);
         mainLight.castShadow = true;
+
+        // 调整阴影参数
+        mainLight.shadow.bias = -0.001;
+        mainLight.shadow.mapSize.width = 2048;
+        mainLight.shadow.mapSize.height = 2048;
+
         scene.add(mainLight);
 
-        const fillLight = new THREE.DirectionalLight(0xffffff, 1);
+
+
+        // 前补光 - 照亮正面
+        const frontLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        frontLight.position.set(0, 0, 1000);
+        scene.add(frontLight);
+
+        // 侧面补光 - 增加立体感
+        const sideLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        sideLight.position.set(-1000, 0, 0);
+        scene.add(sideLight);
+
+        // 柔和的后光 - 勾勒轮廓
+        const backLight = new THREE.DirectionalLight(0xffffff, 1);
+        backLight.position.set(0, 0, -1000);
+        scene.add(backLight);
+
+        // 点光源 - 增加局部高光
+        const pointLight1 = new THREE.PointLight(0xffffff, 0.5);
+        pointLight1.position.set(200, 200, 200);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
+        pointLight2.position.set(-200, -200, -200);
+        scene.add(pointLight2);
+
+
+
+
+        const fillLight = new THREE.DirectionalLight(0xffffff, 2);
         fillLight.position.set(-500, -200, -500);
         scene.add(fillLight);
 
@@ -67,7 +106,7 @@ export default function AnimatedThreeScene({
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true,
-            preserveDrawingBuffer: true // 防止闪烁
+            preserveDrawingBuffer: true
         });
         renderer.setSize(window.innerWidth / 2, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -85,12 +124,11 @@ export default function AnimatedThreeScene({
         loader.load(
             'https://prod.spline.design/ZXvtjC9mcADlah4z/scene.splinecode',
             (splineScene) => {
-                // 设置模型初始位置和比例
                 splineScene.scale.set(1.2, 1.2, 1.2);
                 splineScene.position.set(0, 0, 0);
 
                 // 应用初始旋转
-                const initialRotation = sectionRotations['coca-cola'];
+                const initialRotation = sectionRotations['introduction'];
                 splineScene.setRotationFromEuler(initialRotation);
 
                 splineScene.traverse((object) => {
@@ -105,7 +143,6 @@ export default function AnimatedThreeScene({
                     }
                 });
 
-                // 清除旧模型（如果存在）
                 if (modelRef.current) {
                     scene.remove(modelRef.current);
                 }
@@ -123,9 +160,9 @@ export default function AnimatedThreeScene({
             const width = window.innerWidth;
             const height = window.innerHeight;
 
-            cameraRef.current.aspect = width / height;
-            cameraRef.current.updateProjectionMatrix();
-            rendererRef.current.setSize(width, height);
+            camera.aspect = width / 2 / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width / 2, height);
         };
 
         window.addEventListener('resize', handleResize);
@@ -150,7 +187,7 @@ export default function AnimatedThreeScene({
             if (!modelRef.current || !sceneRef.current || !cameraRef.current || !rendererRef.current) return;
 
             // 获取目标旋转
-            const targetRotation = sectionRotations[currentSection as keyof typeof sectionRotations];
+            const targetRotation = sectionRotations[currentSection as keyof typeof sectionRotations] || sectionRotations['introduction'];
             const currentRotation = modelRef.current.rotation;
 
             // 平滑插值旋转
@@ -161,7 +198,7 @@ export default function AnimatedThreeScene({
             // 计算有限的垂直位移
             const maxScroll = containerHeight - window.innerHeight;
             const scrollProgress = Math.max(0, Math.min(1, scrollY / maxScroll));
-            modelRef.current.position.y = -scrollProgress * 100; // 限制下降范围
+            modelRef.current.position.y = -scrollProgress * 100;
 
             rendererRef.current.render(sceneRef.current, cameraRef.current);
             animationFrameRef.current = requestAnimationFrame(animate);

@@ -3,21 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: #fad6bf;
-  --foreground: #171717;
+  /* 主题色 */
+  --primary: #ff9933;
+  --primary-light: #ffb366;
+  --primary-dark: #ff8000;
+
+  /* 背景色 */
+  --background: #fff5e6;
+  --background-light: #ffffff;
+  --background-dark: #ffd9b3;
+
+  /* 文字颜色 */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+
+  /* 强调色 */
+  --accent: #ff9933;
+  --accent-light: #ffb366;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1a1a;
+    --background-light: #262626;
+    --background-dark: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-light: #999999;
   }
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-primary);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-x: hidden;
 }
 
@@ -35,4 +55,25 @@ html {
 .transform-gpu {
   transform: translateZ(0);
   will-change: transform;
+}
+
+/* 自定义工具类 */
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--primary)] text-white px-8 py-3 rounded-full
+    hover:bg-[var(--primary-dark)] transition-colors;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold mb-8 text-[var(--text-primary)];
+  }
+
+  .section-subtitle {
+    @apply text-xl font-bold mb-3 text-[var(--primary)];
+  }
+
+  .card {
+    @apply bg-[var(--background-light)] p-6 rounded-lg
+    shadow-md hover:shadow-lg transition-shadow;
+  }
 }

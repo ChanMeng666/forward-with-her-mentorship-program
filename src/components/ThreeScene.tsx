@@ -71,7 +71,9 @@ export default function ThreeScene() {
         containerRef.current.appendChild(renderer.domElement);
 
         // Scene settings
-        scene.background = new THREE.Color('#fad6bf');
+        scene.background = new THREE.Color(getComputedStyle(document.documentElement)
+            .getPropertyValue('--background').trim());
+
         renderer.setClearAlpha(1);
 
         // Spline scene

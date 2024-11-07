@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AnimatedThreeScene from '@/components/AnimatedThreeScene';
 import Navigation from '@/components/Navigation';
 
@@ -8,14 +8,12 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [scrollY, setScrollY] = useState(0);
     const [containerHeight, setContainerHeight] = useState(0);
-    const [currentSection, setCurrentSection] = useState('coca-cola');
+    const [currentSection, setCurrentSection] = useState('introduction');
 
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
-
-            // 检测当前部分
-            const sections = ['coca-cola', 'iconic-design', 'sustainability'];
+            const sections = ['introduction', 'schedule', 'requirements'];
             for (const section of sections) {
                 const element = document.getElementById(section);
                 if (element) {
@@ -50,7 +48,7 @@ export default function Home() {
                 currentSection={currentSection}
                 onSectionChange={setCurrentSection}
             />
-            <div ref={containerRef} className="min-h-screen bg-[#fad6bf] pt-16">
+            <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
                 {/* 3D Model */}
                 <AnimatedThreeScene
                     scrollY={scrollY}
@@ -60,39 +58,66 @@ export default function Home() {
 
                 {/* Content Sections */}
                 <div className="w-1/2 ml-auto">
-                    <section id="coca-cola" className="h-screen flex items-center p-10">
+                    <section id="introduction" className="h-screen flex items-center p-10">
                         <div>
-                            <h1 className="text-6xl font-bold mb-6">Coca Cola</h1>
-                            <p className="text-xl mb-8">
-                                Experience the refreshing taste of the most popular beverage.
-                            </p>
-                            <button className="bg-red-600 text-white px-8 py-3 rounded-full text-lg hover:bg-red-700 transition-colors">
-                                Learn More
+                            <div className="mb-8">
+                                <h2 className="text-xl mb-2 text-[#ff9933] font-bold">2024冬季</h2>
+                                <h1 className="text-5xl font-bold mb-6 text-[#333]">「她行」Mentor招募</h1>
+                            </div>
+                            <div className="space-y-4 text-[#666]">
+                                <p className="text-lg">
+                                    「她行ForwardwithHer」是一个致力于帮助中国科技领域的女性大学生或职场新人的Mentorship项目。
+                                </p>
+                                <p className="text-lg">
+                                    2021年获得联合国妇女署的支持，截止2024年4月，已有超过800位Mentee，360余位Mentor参与过我们的项目。
+                                </p>
+                            </div>
+                            <button className="mt-8 bg-[#ff9933] text-white px-8 py-3 rounded-full text-lg hover:bg-[#ff8000] transition-colors">
+                                加入我们
                             </button>
                         </div>
                     </section>
 
-                    <section id="iconic-design" className="h-screen flex items-center bg-red-600 text-white p-10">
+                    <section id="schedule" className="h-screen flex items-center bg-[#fff] p-10">
                         <div>
-                            <h2 className="text-5xl font-bold mb-6">Iconic Design</h2>
-                            <p className="text-xl mb-8">
-                                The Coca-Cola can design has become a symbol recognized worldwide,
-                                representing refreshment and enjoyment.
-                            </p>
+                            <h2 className="text-4xl font-bold mb-8 text-[#333]">活动安排</h2>
+                            <div className="space-y-6 text-[#666]">
+                                <div className="bg-[#fff5e6] p-6 rounded-lg">
+                                    <h3 className="text-xl font-bold mb-3 text-[#ff9933]">前期准备</h3>
+                                    <p>Mentor培训与破冰活动，帮助您更好地了解项目并认识其他优秀的女性导师。</p>
+                                </div>
+                                <div className="bg-[#fff5e6] p-6 rounded-lg">
+                                    <h3 className="text-xl font-bold mb-3 text-[#ff9933]">导师组答疑</h3>
+                                    <p>以小组形式进行集体答疑，sharing您的经验与见解。</p>
+                                </div>
+                                <div className="bg-[#fff5e6] p-6 rounded-lg">
+                                    <h3 className="text-xl font-bold mb-3 text-[#ff9933]">一对一交流</h3>
+                                    <p>与匹配的Mentee进行4次深度交流，帮助她们在职业发展道路上更有方向。</p>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
-                    <section id="sustainability" className="h-screen flex items-center p-10">
+                    <section id="requirements" className="h-screen flex items-center p-10">
                         <div>
-                            <h2 className="text-5xl font-bold mb-6">Sustainability</h2>
-                            <p className="text-xl mb-8">
-                                Our commitment to environmental responsibility includes using
-                                recyclable materials and reducing our carbon footprint.
-                            </p>
+                            <h2 className="text-4xl font-bold mb-8 text-[#333]">申请要求</h2>
+                            <div className="space-y-4 text-[#666]">
+                                <p className="text-lg">• 科技行业从业者，有2年以上工作经验</p>
+                                <p className="text-lg">• 愿意分享经验，帮助更多女性在STEM领域发展</p>
+                                <p className="text-lg">• 能按时参与活动，对mentee负责</p>
+                                <p className="text-lg">• 认同项目理念，乐于互助交流</p>
+                            </div>
+                            <div className="mt-12 space-y-4">
+                                <h3 className="text-2xl font-bold text-[#ff9933]">联系我们</h3>
+                                <p className="text-[#666]">邮箱：taxingFWH@163.com</p>
+                                <p className="text-[#666]">关注我们：微信公众号「她行Mentorship」</p>
+                            </div>
                         </div>
                     </section>
                 </div>
             </div>
         </>
     );
-}
+};
+
+// export default Home;
