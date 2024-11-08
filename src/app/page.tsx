@@ -47,10 +47,6 @@ export default function Home() {
 
     return (
         <>
-            {/*<Navigation*/}
-            {/*    currentSection={currentSection}*/}
-            {/*    onSectionChange={setCurrentSection}*/}
-            {/*/>*/}
             <Navigation currentSection={currentSection} />
             <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
                 <AnimatedThreeScene

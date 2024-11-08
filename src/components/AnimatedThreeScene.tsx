@@ -32,11 +32,7 @@ export default function AnimatedThreeScene({
     const [isModelLoaded, setIsModelLoaded] = useState(false);
     const timeRef = useRef(0);
 
-    // 为每个部分定义目标旋转角度和动画参数
-    
-    // const sectionAnimations: Record<string, {
-
-    // 使用 useMemo 缓存 sectionAnimations
+    // Move sectionAnimations into useMemo to prevent unnecessary re-renders
     const sectionAnimations = useMemo(() => ({
         'introduction': {
             rotation: new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
