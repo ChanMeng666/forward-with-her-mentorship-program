@@ -25,9 +25,9 @@ export default function AnimatedThreeScene({
 
     // 定义每个部分的目标旋转角度 - 更新为新的section IDs
     const sectionRotations = {
-        'introduction': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1),
-        'schedule': new THREE.Euler(0, -Math.PI * 0.45, Math.PI * 0.1),
-        'requirements': new THREE.Euler(0, Math.PI * 0.45, -Math.PI * 0.1)
+        'introduction': new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
+        'schedule': new THREE.Euler(0, -Math.PI * 0.9, Math.PI * 0.1),
+        'requirements': new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1)
     };
 
     // 初始化场景
@@ -59,7 +59,7 @@ export default function AnimatedThreeScene({
         scene.add(ambientLight);
 
         const mainLight = new THREE.DirectionalLight(0xffffff, 3);
-        mainLight.position.set(500, 1000, 500);
+        mainLight.position.set(500, 500, 500);
         mainLight.castShadow = true;
 
         // 调整阴影参数
@@ -124,7 +124,8 @@ export default function AnimatedThreeScene({
         loader.load(
             'https://prod.spline.design/ZXvtjC9mcADlah4z/scene.splinecode',
             (splineScene) => {
-                splineScene.scale.set(1.2, 1.2, 1.2);
+                // splineScene.scale.set(1.2, 1.2, 1.2);
+                splineScene.scale.set(2, 2, 2);
                 splineScene.position.set(0, 0, 0);
 
                 // 应用初始旋转
@@ -198,7 +199,7 @@ export default function AnimatedThreeScene({
             // 计算有限的垂直位移
             const maxScroll = containerHeight - window.innerHeight;
             const scrollProgress = Math.max(0, Math.min(1, scrollY / maxScroll));
-            modelRef.current.position.y = -scrollProgress * 100;
+            modelRef.current.position.y = -scrollProgress * 10;
 
             rendererRef.current.render(sceneRef.current, cameraRef.current);
             animationFrameRef.current = requestAnimationFrame(animate);
@@ -219,7 +220,7 @@ export default function AnimatedThreeScene({
             className="fixed left-0 top-0 w-1/2 h-screen"
             style={{
                 willChange: 'transform',
-                transform: `translateY(${Math.min(scrollY * 0.2, window.innerHeight * 0.2)}px)`,
+                transform: `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`,
             }}
         />
     );

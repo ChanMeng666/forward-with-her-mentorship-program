@@ -24,7 +24,7 @@ export default function Navigation({ onSectionChange, currentSection }: Navigati
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
-                        <span className="text-[#ff9933] font-bold text-xl">她行</span>
+                        <span className="text-[#ff9933] font-bold text-xl">她行 Forward with Her</span>
                     </div>
                     <div className="flex space-x-8">
                         {sections.map((section) => (
