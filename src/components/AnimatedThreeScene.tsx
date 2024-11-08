@@ -75,6 +75,8 @@ export default function AnimatedThreeScene({
     useEffect(() => {
         if (!containerRef.current) return;
 
+        const currentContainer = containerRef.current;
+
         // Scene setup
         const scene = new THREE.Scene();
         sceneRef.current = scene;
@@ -205,8 +207,8 @@ export default function AnimatedThreeScene({
 
         return () => {
             window.removeEventListener('resize', handleResize);
-            if (rendererRef.current && containerRef.current) {
-                containerRef.current.removeChild(rendererRef.current.domElement);
+            if (rendererRef.current && currentContainer) {
+                currentContainer.removeChild(rendererRef.current.domElement);
                 rendererRef.current.dispose();
             }
             if (animationFrameRef.current) {
@@ -268,7 +270,7 @@ export default function AnimatedThreeScene({
                 cancelAnimationFrame(animationFrameRef.current);
             }
         };
-    }, [currentSection, scrollY, containerHeight, isModelLoaded]);
+    }, [currentSection, scrollY, containerHeight, isModelLoaded, sectionAnimations]);
 
     return (
         <div

@@ -52,11 +52,10 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 interface NavigationProps {
-    onSectionChange: (section: string) => void;
     currentSection: string;
 }
 
-export default function Navigation({ onSectionChange, currentSection }: NavigationProps) {
+export default function Navigation({ currentSection }: NavigationProps) {
     const { t } = useLanguage();
 
     const scrollToSection = (id: string) => {

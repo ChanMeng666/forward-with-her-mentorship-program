@@ -138,6 +138,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Image from 'next/image';
 
 const AutoScrollGallery = () => {
     const { t } = useLanguage();
@@ -234,7 +235,6 @@ const AutoScrollGallery = () => {
     // 处理鼠标和触摸事件
     const handleInteractionStart = () => {
         if (scrollRef.current) {
-            // 保存暂停时的精确滚动位置
             pausedScrollPositionRef.current = scrollRef.current.scrollLeft;
             scrollPositionRef.current = scrollRef.current.scrollLeft;
         }
@@ -243,7 +243,6 @@ const AutoScrollGallery = () => {
 
     const handleInteractionEnd = () => {
         if (pausedScrollPositionRef.current !== null && scrollRef.current) {
-            // 恢复到暂停时的精确位置
             scrollPositionRef.current = pausedScrollPositionRef.current;
             scrollRef.current.scrollLeft = pausedScrollPositionRef.current;
         }
@@ -272,10 +271,14 @@ const AutoScrollGallery = () => {
                                 key={`${src}-${index}`}
                                 className="min-w-[300px] h-[200px] relative rounded-lg overflow-hidden shadow-lg"
                             >
-                                <img
+                                <Image
                                     src={src}
                                     alt={`Gallery image ${(index % baseImages.length) + 1}`}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="300px"
+                                    className="object-cover"
+                                    loading={index < 4 ? "eager" : "lazy"}
+                                    quality={75}
                                 />
                             </div>
                         ))}
