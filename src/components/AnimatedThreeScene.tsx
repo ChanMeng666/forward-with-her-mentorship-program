@@ -30,55 +30,7 @@ interface SectionConfig {
     animation: AnimationConfig;
 }
 
-// interface SectionAnimations {
-//     [key: string]: SectionConfig;
-// }
-
 type SectionAnimations = Record<SectionKey, SectionConfig>;  // 使用 Record 类型和 SectionKey
-
-
-// interface SectionAnimations {
-//     introduction: {
-//         rotation: THREE.Euler;
-//         animation: {
-//             rotationSpeed: number;
-//             swayAmount: number;
-//             swaySpeed: number;
-//         };
-//     };
-//     gallery: {
-//         rotation: THREE.Euler;
-//         animation: {
-//             rotationSpeed: number;
-//             swayAmount: number;
-//             swaySpeed: number;
-//         };
-//     };
-//     schedule: {
-//         rotation: THREE.Euler;
-//         animation: {
-//             rotationSpeed: number;
-//             swayAmount: number;
-//             swaySpeed: number;
-//         };
-//     };
-//     requirements: {
-//         rotation: THREE.Euler;
-//         animation: {
-//             rotationSpeed: number;
-//             swayAmount: number;
-//             swaySpeed: number;
-//         };
-//     };
-// }
-
-// interface AnimatedThreeSceneProps {
-//     scrollY: number;
-//     containerHeight: number;
-//     currentSection: string;
-// }
-
-
 
 
 export default function AnimatedThreeScene({
@@ -91,9 +43,6 @@ export default function AnimatedThreeScene({
     const sceneRef = useRef<THREE.Scene | null>(null);
     const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
 
-
-    // const modelRef = useRef<THREE.Group | null>(null);
-
     // Change the type to be more generic to accept any THREE.Object3D
     const modelRef = useRef<THREE.Object3D | null>(null);
 
@@ -103,7 +52,6 @@ export default function AnimatedThreeScene({
     const timeRef = useRef(0);
 
     // Move sectionAnimations into useMemo to prevent unnecessary re-renders
-    // const sectionAnimations = useMemo(() => ({
     const sectionAnimations: SectionAnimations = useMemo(() => ({
         'introduction': {
             rotation: new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
@@ -143,13 +91,9 @@ export default function AnimatedThreeScene({
 
     // 初始化场景
     useEffect(() => {
-        // if (!containerRef.current) return;
-        // const currentContainer = containerRef.current;
-
 
         const container = containerRef.current;
         if (!container) return;
-
 
         // Scene setup
         const scene = new THREE.Scene();
@@ -195,11 +139,6 @@ export default function AnimatedThreeScene({
             backLight.position.set(0, 0, -1000);
             scene.add(backLight);
 
-            // const pointLights = [
-            //     { position: [200, 200, 200], intensity: 0.5 },
-            //     { position: [-200, -200, -200], intensity: 0.5 }
-            // ];
-
             const pointLights: PointLightConfig[] = [
                 { position: [200, 200, 200], intensity: 0.5 },
                 { position: [-200, -200, -200], intensity: 0.5 }
@@ -228,9 +167,6 @@ export default function AnimatedThreeScene({
         renderer.toneMappingExposure = 1.5;
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-
-        // containerRef.current.appendChild(renderer.domElement);
 
         container.appendChild(renderer.domElement);
 
@@ -315,8 +251,6 @@ export default function AnimatedThreeScene({
             timeRef.current += 0.01;
 
             // 获取当前部分的动画参数
-            // const currentAnim = sectionAnimations[currentSection] || sectionAnimations['introduction'];
-
             const section = currentSection as keyof typeof sectionAnimations;
             const currentAnim = sectionAnimations[section] || sectionAnimations['introduction'];
 
