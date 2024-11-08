@@ -240,17 +240,36 @@ export default function AnimatedThreeScene({
         // };
 
 
+        // const handleResize = () => {
+        //     if (!cameraRef.current || !rendererRef.current) return;
+        //     const width = window.innerWidth;
+        //     const height = window.innerHeight;
+        //     const isDesktop = width >= 1024;
+        //
+        //     camera.aspect = width / (isDesktop ? 2 : 1) / height;
+        //     camera.updateProjectionMatrix();
+        //     renderer.setSize(width / (isDesktop ? 2 : 1), height);
+        // };
+
+
+        // 在 handleResize 函数中添加模型缩放调整
         const handleResize = () => {
-            if (!cameraRef.current || !rendererRef.current) return;
+            if (!cameraRef.current || !rendererRef.current || !modelRef.current) return;
             const width = window.innerWidth;
             const height = window.innerHeight;
             const isDesktop = width >= 1024;
 
+            // 调整相机
             camera.aspect = width / (isDesktop ? 2 : 1) / height;
             camera.updateProjectionMatrix();
-            renderer.setSize(width / (isDesktop ? 2 : 1), height);
-        };
+            renderer.setSize(width / (isDesktop ? 2 : 1), isDesktop ? height : height * 0.4);
 
+            // 调整模型大小
+            if (modelRef.current) {
+                const scale = isDesktop ? 2 : 1.5;
+                modelRef.current.scale.set(scale, scale, scale);
+            }
+        };
 
 
         window.addEventListener('resize', handleResize);
@@ -345,10 +364,13 @@ export default function AnimatedThreeScene({
     return (
         <div
             ref={containerRef}
-            className="w-full h-full"
+            className="w-full h-full absolute lg:relative"
             style={{
                 willChange: 'transform',
-                transform: `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`,
+                // transform: `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`,
+                transform: window.innerWidth >= 1024
+                    ? `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`
+                    : 'none',
             }}
         />
     );

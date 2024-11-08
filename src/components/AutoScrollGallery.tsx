@@ -280,30 +280,30 @@ const AutoScrollGallery = () => {
     }
 
     return (
-        <section className="py-8 lg:py-12 bg-background-light">
-            <div className="max-w-7xl mx-auto px-4">
+        <section className="py-8 lg:py-12 bg-background-light w-full">
+            <div className="w-full mx-auto px-4">
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 lg:mb-8 text-left text-[#333]">
                     {t('gallery.title')}
                 </h2>
                 <div
                     ref={scrollRef}
-                    className="flex overflow-x-hidden relative py-4 lg:py-6"
+                    className="flex overflow-x-hidden relative py-4 lg:py-6 w-full"
                     onMouseEnter={handleInteractionStart}
                     onMouseLeave={handleInteractionEnd}
                     onTouchStart={handleInteractionStart}
                     onTouchEnd={handleInteractionEnd}
                 >
-                    <div className="flex gap-2 lg:gap-4">
+                    <div className="flex gap-2 lg:gap-4 w-full">
                         {images.map((src, index) => (
                             <div
                                 key={`${src}-${index}`}
-                                className="min-w-[200px] lg:min-w-[300px] h-[150px] lg:h-[200px] relative rounded-lg overflow-hidden shadow-lg"
+                                className="min-w-[180px] lg:min-w-[280px] h-[120px] lg:h-[180px] relative rounded-lg overflow-hidden shadow-lg"
                             >
                                 <Image
                                     src={src}
                                     alt={`Gallery image ${(index % baseImages.length) + 1}`}
                                     fill
-                                    sizes="(min-width: 1024px) 300px, 200px"
+                                    sizes="(min-width: 1024px) 280px, 180px"
                                     className="object-cover"
                                     loading={index < 4 ? "eager" : "lazy"}
                                     quality={75}

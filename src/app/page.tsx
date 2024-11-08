@@ -214,7 +214,7 @@ export default function Home() {
             <Navigation currentSection={currentSection} />
             <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
                 {/* 3D Scene - 在桌面端显示在左侧，移动端显示在顶部 */}
-                <div className="lg:fixed lg:left-0 lg:top-0 lg:w-1/2 lg:h-screen h-[50vh] w-full">
+                <div className="lg:fixed lg:left-0 lg:top-0 lg:w-1/2 lg:h-screen h-[40vh] w-full relative">
                     {isMounted && (
                         <AnimatedThreeScene
                             scrollY={scrollY}
@@ -225,9 +225,9 @@ export default function Home() {
                 </div>
 
                 {/* 内容区域 - 在桌面端显示在右侧，移动端显示在下方 */}
-                <div className="lg:w-1/2 lg:ml-auto w-full px-4 lg:px-0">
-                    <section id="introduction" className="min-h-screen flex items-center py-10 lg:p-10">
-                        <div>
+                <div className="lg:w-1/2 lg:ml-auto w-full px-4 lg:px-0 relative">
+                    <section id="introduction" className="min-h-screen flex items-center py-10 lg:p-10 mt-[40vh] lg:mt-0">
+                        <div className="w-full">
                             <div className="mb-8">
                                 <h2 className="text-lg lg:text-xl mb-2 text-[#ff9933] font-bold">
                                     {t('intro.season')}
@@ -246,8 +246,10 @@ export default function Home() {
                         </div>
                     </section>
 
-                    <section id="gallery" className="min-h-screen flex items-center bg-[#fff]">
-                        <AutoScrollGallery />
+                    <section id="gallery" className="min-h-screen flex items-center bg-[#fff] w-full overflow-hidden">
+                        <div className="w-full">
+                            <AutoScrollGallery/>
+                        </div>
                     </section>
 
                     <section id="schedule" className="min-h-screen flex items-center bg-[#fff] p-4 lg:p-10">
