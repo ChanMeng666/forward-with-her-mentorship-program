@@ -11,7 +11,7 @@ type SectionKey = 'introduction' | 'gallery' | 'schedule' | 'requirements';
 interface AnimatedThreeSceneProps {
     scrollY: number;
     containerHeight: number;
-    currentSection: string;
+    currentSection: SectionKey;
 }
 
 interface PointLightConfig {
@@ -30,9 +30,12 @@ interface SectionConfig {
     animation: AnimationConfig;
 }
 
-interface SectionAnimations {
-    [key: string]: SectionConfig;
-}
+// interface SectionAnimations {
+//     [key: string]: SectionConfig;
+// }
+
+type SectionAnimations = Record<SectionKey, SectionConfig>;  // 使用 Record 类型和 SectionKey
+
 
 // interface SectionAnimations {
 //     introduction: {

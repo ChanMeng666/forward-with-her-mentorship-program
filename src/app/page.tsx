@@ -1,5 +1,6 @@
 "use client"
 
+
 import React, { useEffect, useRef, useState } from 'react';
 import AnimatedThreeScene from '@/components/AnimatedThreeScene';
 import Navigation from '@/components/Navigation';
