@@ -2,14 +2,15 @@
 //  "extends": ["next/core-web-vitals", "next/typescript"]
 //}
 
+
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
     "@typescript-eslint/no-unused-vars": ["error", {
       "argsIgnorePattern": "^_",
       "varsIgnorePattern": "^_",
-      "ignoreRestSiblings": true,
-      "react-hooks/exhaustive-deps": "warn"
-    }]
+      "ignoreRestSiblings": true
+    }],
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

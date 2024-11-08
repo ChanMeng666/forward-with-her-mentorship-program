@@ -22,6 +22,53 @@ interface PointLightConfig {
     intensity: number;
 }
 
+
+
+
+interface SectionAnimations {
+    introduction: {
+        rotation: THREE.Euler;
+        animation: {
+            rotationSpeed: number;
+            swayAmount: number;
+            swaySpeed: number;
+        };
+    };
+    gallery: {
+        rotation: THREE.Euler;
+        animation: {
+            rotationSpeed: number;
+            swayAmount: number;
+            swaySpeed: number;
+        };
+    };
+    schedule: {
+        rotation: THREE.Euler;
+        animation: {
+            rotationSpeed: number;
+            swayAmount: number;
+            swaySpeed: number;
+        };
+    };
+    requirements: {
+        rotation: THREE.Euler;
+        animation: {
+            rotationSpeed: number;
+            swayAmount: number;
+            swaySpeed: number;
+        };
+    };
+}
+
+interface AnimatedThreeSceneProps {
+    scrollY: number;
+    containerHeight: number;
+    currentSection: string;
+}
+
+
+
+
 export default function AnimatedThreeScene({
                                                scrollY,
                                                containerHeight,
@@ -44,7 +91,8 @@ export default function AnimatedThreeScene({
     const timeRef = useRef(0);
 
     // Move sectionAnimations into useMemo to prevent unnecessary re-renders
-    const sectionAnimations = useMemo(() => ({
+    // const sectionAnimations = useMemo(() => ({
+    const sectionAnimations: SectionAnimations = useMemo(() => ({
         'introduction': {
             rotation: new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
             animation: {
@@ -78,6 +126,8 @@ export default function AnimatedThreeScene({
             }
         }
     }), []); // 空依赖数组，因为这些值是常量
+
+
 
     // 初始化场景
     useEffect(() => {
