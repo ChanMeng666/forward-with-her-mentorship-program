@@ -229,8 +229,8 @@ export default function AnimatedThreeScene({
 
         return () => {
             window.removeEventListener('resize', handleResize);
-            if (rendererRef.current && currentContainer) {
-                currentContainer.removeChild(rendererRef.current.domElement);
+            if (rendererRef.current && container) {
+                container.removeChild(rendererRef.current.domElement);
                 rendererRef.current.dispose();
             }
             if (animationFrameRef.current) {
@@ -292,22 +292,13 @@ export default function AnimatedThreeScene({
         }
 
         return () => {
-            window.removeEventListener('resize', handleResize);
 
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
 
-
-            if (controlsRef.current) {
-                controlsRef.current.dispose();
-            }
-            if (rendererRef.current && container) {
-                container.removeChild(rendererRef.current.domElement);
-                rendererRef.current.dispose();
-            }
         };
-    }, [currentSection, isModelLoaded, sectionAnimations]);
+    }, [currentSection, scrollY, containerHeight, isModelLoaded, sectionAnimations]);
 
     return (
         <div
