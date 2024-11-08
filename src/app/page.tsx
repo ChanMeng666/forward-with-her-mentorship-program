@@ -1,13 +1,22 @@
 "use client"
 
-type SectionKey = 'introduction' | 'gallery' | 'schedule' | 'requirements';
+// type SectionKey = 'introduction' | 'gallery' | 'schedule' | 'requirements';
 
 
 import React, { useEffect, useRef, useState } from 'react';
-import AnimatedThreeScene from '@/components/AnimatedThreeScene';
+// import AnimatedThreeScene from '@/components/AnimatedThreeScene';
 import Navigation from '@/components/Navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AutoScrollGallery from '@/components/AutoScrollGallery';
+import dynamic from 'next/dynamic';
+
+// 动态导入 AnimatedThreeScene 组件，并禁用 SSR
+const AnimatedThreeScene = dynamic(
+    () => import('@/components/AnimatedThreeScene'),
+    { ssr: false }
+);
+
+type SectionKey = 'introduction' | 'gallery' | 'schedule' | 'requirements';
 
 export default function Home() {
     const { t } = useLanguage();
@@ -15,8 +24,11 @@ export default function Home() {
     const [scrollY, setScrollY] = useState(0);
     const [containerHeight, setContainerHeight] = useState(0);
     const [currentSection, setCurrentSection] = useState<SectionKey>('introduction');
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+
         const handleScroll = () => {
             setScrollY(window.scrollY);
             const sections: SectionKey[] = ['introduction', 'gallery', 'schedule', 'requirements'];
@@ -52,11 +64,19 @@ export default function Home() {
         <>
             <Navigation currentSection={currentSection} />
             <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
-                <AnimatedThreeScene
-                    scrollY={scrollY}
-                    containerHeight={containerHeight}
-                    currentSection={currentSection}
-                />
+                {/*<AnimatedThreeScene*/}
+                {/*    scrollY={scrollY}*/}
+                {/*    containerHeight={containerHeight}*/}
+                {/*    currentSection={currentSection}*/}
+                {/*/>*/}
+
+                {isMounted && (
+                    <AnimatedThreeScene
+                        scrollY={scrollY}
+                        containerHeight={containerHeight}
+                        currentSection={currentSection}
+                    />
+                )}
 
                 <div className="w-1/2 ml-auto">
                     <section id="introduction" className="h-screen flex items-center p-10">

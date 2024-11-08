@@ -148,6 +148,8 @@ const AutoScrollGallery = () => {
     const lastTimestampRef = useRef<number | null>(null);
     const pausedScrollPositionRef = useRef<number | null>(null);
 
+    const [isMounted, setIsMounted] = useState(false);
+
     // 定义基础图片数组
     const baseImages = [
         '/images/gallery/1.png',
@@ -167,6 +169,8 @@ const AutoScrollGallery = () => {
     const [images] = useState([...baseImages, ...baseImages, ...baseImages]);
 
     useEffect(() => {
+        setIsMounted(true);
+
         let animationId: number;
         const scrollContainer = scrollRef.current;
 
@@ -231,6 +235,10 @@ const AutoScrollGallery = () => {
             cancelAnimationFrame(animationId);
         };
     }, [isPaused, baseImages.length]);
+
+    if (!isMounted) {
+        return null;
+    }
 
     // 处理鼠标和触摸事件
     const handleInteractionStart = () => {
