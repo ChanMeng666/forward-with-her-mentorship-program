@@ -11,11 +11,11 @@ interface AnimatedThreeSceneProps {
     currentSection: string;
 }
 
-interface AnimationState {
-    rotationSpeed: number;
-    swayAmount: number;
-    swaySpeed: number;
-}
+// interface AnimationState {
+//     rotationSpeed: number;
+//     swayAmount: number;
+//     swaySpeed: number;
+// }
 
 export default function AnimatedThreeScene({
                                                scrollY,
