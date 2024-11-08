@@ -1,5 +1,7 @@
 "use client"
 
+type SectionKey = 'introduction' | 'gallery' | 'schedule' | 'requirements';
+
 
 import React, { useEffect, useRef, useState } from 'react';
 import AnimatedThreeScene from '@/components/AnimatedThreeScene';
@@ -12,12 +14,12 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [scrollY, setScrollY] = useState(0);
     const [containerHeight, setContainerHeight] = useState(0);
-    const [currentSection, setCurrentSection] = useState('introduction');
+    const [currentSection, setCurrentSection] = useState<SectionKey>('introduction');
 
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
-            const sections = ['introduction', 'gallery', 'schedule', 'requirements'];
+            const sections: SectionKey[] = ['introduction', 'gallery', 'schedule', 'requirements'];
             for (const section of sections) {
                 const element = document.getElementById(section);
                 if (element) {
