@@ -17,6 +17,11 @@ interface AnimatedThreeSceneProps {
 //     swaySpeed: number;
 // }
 
+interface PointLightConfig {
+    position: [number, number, number]; // Explicitly define as tuple type
+    intensity: number;
+}
+
 export default function AnimatedThreeScene({
                                                scrollY,
                                                containerHeight,
@@ -118,7 +123,12 @@ export default function AnimatedThreeScene({
             backLight.position.set(0, 0, -1000);
             scene.add(backLight);
 
-            const pointLights = [
+            // const pointLights = [
+            //     { position: [200, 200, 200], intensity: 0.5 },
+            //     { position: [-200, -200, -200], intensity: 0.5 }
+            // ];
+
+            const pointLights: PointLightConfig[] = [
                 { position: [200, 200, 200], intensity: 0.5 },
                 { position: [-200, -200, -200], intensity: 0.5 }
             ];
