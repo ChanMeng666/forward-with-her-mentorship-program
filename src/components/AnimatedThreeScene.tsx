@@ -104,12 +104,21 @@ export default function AnimatedThreeScene({
         scene.background = new THREE.Color(bgColor);
 
         // Camera setup
+        // const camera = new THREE.PerspectiveCamera(
+        //     45,
+        //     window.innerWidth / 2 / window.innerHeight,
+        //     1,
+        //     10000
+        // );
+
         const camera = new THREE.PerspectiveCamera(
             45,
-            window.innerWidth / 2 / window.innerHeight,
+            window.innerWidth / (window.innerWidth >= 1024 ? 2 : 1) / window.innerHeight,
             1,
             10000
         );
+
+
         camera.position.set(1000, 200, 1500);
         camera.lookAt(0, 0, 0);
         cameraRef.current = camera;
@@ -159,7 +168,14 @@ export default function AnimatedThreeScene({
             alpha: true,
             preserveDrawingBuffer: true
         });
-        renderer.setSize(window.innerWidth / 2, window.innerHeight);
+
+        // renderer.setSize(window.innerWidth / 2, window.innerHeight);
+        renderer.setSize(
+            window.innerWidth / (window.innerWidth >= 1024 ? 2 : 1),
+            window.innerHeight
+        );
+
+
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.physicallyCorrectLights = true;
         renderer.outputEncoding = THREE.sRGBEncoding;
@@ -214,14 +230,28 @@ export default function AnimatedThreeScene({
         );
 
         // Window resize handler
+        // const handleResize = () => {
+        //     if (!cameraRef.current || !rendererRef.current) return;
+        //     const width = window.innerWidth;
+        //     const height = window.innerHeight;
+        //     camera.aspect = width / 2 / height;
+        //     camera.updateProjectionMatrix();
+        //     renderer.setSize(width / 2, height);
+        // };
+
+
         const handleResize = () => {
             if (!cameraRef.current || !rendererRef.current) return;
             const width = window.innerWidth;
             const height = window.innerHeight;
-            camera.aspect = width / 2 / height;
+            const isDesktop = width >= 1024;
+
+            camera.aspect = width / (isDesktop ? 2 : 1) / height;
             camera.updateProjectionMatrix();
-            renderer.setSize(width / 2, height);
+            renderer.setSize(width / (isDesktop ? 2 : 1), height);
         };
+
+
 
         window.addEventListener('resize', handleResize);
 
@@ -300,10 +330,22 @@ export default function AnimatedThreeScene({
         };
     }, [currentSection, scrollY, containerHeight, isModelLoaded, sectionAnimations]);
 
+    // return (
+    //     <div
+    //         ref={containerRef}
+    //         className="fixed left-0 top-0 w-1/2 h-screen"
+    //         style={{
+    //             willChange: 'transform',
+    //             transform: `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`,
+    //         }}
+    //     />
+    // );
+
+
     return (
         <div
             ref={containerRef}
-            className="fixed left-0 top-0 w-1/2 h-screen"
+            className="w-full h-full"
             style={{
                 willChange: 'transform',
                 transform: `translateY(${Math.min(scrollY * 0.1, window.innerHeight * 0.1)}px)`,
