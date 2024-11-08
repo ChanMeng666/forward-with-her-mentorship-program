@@ -31,7 +31,13 @@ export default function AnimatedThreeScene({
     const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
     const sceneRef = useRef<THREE.Scene | null>(null);
     const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-    const modelRef = useRef<THREE.Group | null>(null);
+
+
+    // const modelRef = useRef<THREE.Group | null>(null);
+
+    // Change the type to be more generic to accept any THREE.Object3D
+    const modelRef = useRef<THREE.Object3D | null>(null);
+
     const controlsRef = useRef<OrbitControls | null>(null);
     const animationFrameRef = useRef<number>();
     const [isModelLoaded, setIsModelLoaded] = useState(false);
@@ -75,9 +81,13 @@ export default function AnimatedThreeScene({
 
     // 初始化场景
     useEffect(() => {
-        if (!containerRef.current) return;
+        // if (!containerRef.current) return;
+        // const currentContainer = containerRef.current;
 
-        const currentContainer = containerRef.current;
+
+        const container = containerRef.current;
+        if (!container) return;
+
 
         // Scene setup
         const scene = new THREE.Scene();
@@ -156,7 +166,12 @@ export default function AnimatedThreeScene({
         renderer.toneMappingExposure = 1.5;
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        containerRef.current.appendChild(renderer.domElement);
+
+
+        // containerRef.current.appendChild(renderer.domElement);
+
+        container.appendChild(renderer.domElement);
+
         rendererRef.current = renderer;
 
         // Controls setup
@@ -270,14 +285,29 @@ export default function AnimatedThreeScene({
             animationFrameRef.current = requestAnimationFrame(animate);
         };
 
-        animate();
+        // animate();
+
+        if (isModelLoaded) {
+            animate();
+        }
 
         return () => {
+            window.removeEventListener('resize', handleResize);
+
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
+
+
+            if (controlsRef.current) {
+                controlsRef.current.dispose();
+            }
+            if (rendererRef.current && container) {
+                container.removeChild(rendererRef.current.domElement);
+                rendererRef.current.dispose();
+            }
         };
-    }, [currentSection, scrollY, containerHeight, isModelLoaded, sectionAnimations]);
+    }, [currentSection, isModelLoaded, sectionAnimations]);
 
     return (
         <div
