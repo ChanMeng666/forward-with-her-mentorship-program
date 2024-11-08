@@ -259,8 +259,9 @@ export default function AnimatedThreeScene({
     // 定义每个部分的目标旋转角度
     const sectionRotations = {
         'introduction': new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
+        'gallery': new THREE.Euler(0, Math.PI * 0.5, Math.PI * 0.2),
         'schedule': new THREE.Euler(0, -Math.PI * 0.9, Math.PI * 0.1),
-        'requirements': new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1)
+        'requirements': new THREE.Euler(0, Math.PI * 0.1, -Math.PI * 0.1)
     };
 
     // 初始化场景

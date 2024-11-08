@@ -14,6 +14,7 @@ export const translations = {
     en: {
         // Navigation
         'nav.intro': 'Introduction',
+        'nav.gallery': 'Gallery',
         'nav.schedule': 'Schedule',
         'nav.requirements': 'Requirements',
         'nav.title': 'Forward with Her',
@@ -24,6 +25,9 @@ export const translations = {
         'intro.description1': 'Forward with Her is a Mentorship program dedicated to helping female university students and early-career professionals in China\'s tech industry.',
         'intro.description2': 'Supported by UN Women in 2021, we have had over 800 Mentees and 360 Mentors participating in our program as of April 2024.',
         'intro.button': 'Join Us',
+
+        // Gallery Section
+        'gallery.title': 'Poster Gallery',
 
         // Schedule Section
         'schedule.title': 'Program Schedule',
@@ -47,6 +51,7 @@ export const translations = {
     zh: {
         // Navigation
         'nav.intro': '项目介绍',
+        'nav.gallery': '海报剪影',
         'nav.schedule': '活动安排',
         'nav.requirements': '申请要求',
         'nav.title': '她行 Forward with Her',
@@ -57,6 +62,9 @@ export const translations = {
         'intro.description1': '「她行ForwardwithHer」是一个致力于帮助中国科技领域的女性大学生或职场新人的Mentorship项目。',
         'intro.description2': '2021年获得联合国妇女署的支持，截止2024年4月，已有超过800位Mentee，360余位Mentor参与过我们的项目。',
         'intro.button': '加入我们',
+
+        // Gallery Section
+        'gallery.title': '海报剪影',
 
         // Schedule Section
         'schedule.title': '活动安排',

@@ -68,6 +68,7 @@ export default function Navigation({ onSectionChange, currentSection }: Navigati
 
     const sections = [
         { id: 'introduction', name: t('nav.intro') },
+        { id: 'gallery', name: t('nav.gallery') },
         { id: 'schedule', name: t('nav.schedule') },
         { id: 'requirements', name: t('nav.requirements') }
     ];
