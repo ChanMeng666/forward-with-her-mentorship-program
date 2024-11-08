@@ -156,6 +156,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AutoScrollGallery from '@/components/AutoScrollGallery';
 import dynamic from 'next/dynamic';
@@ -210,8 +211,8 @@ export default function Home() {
     }, []);
 
     return (
-        <>
-            <Navigation currentSection={currentSection} />
+        <div className="min-h-screen flex flex-col">
+            <Navigation currentSection={currentSection}/>
             <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
                 {/* 3D Scene - 在桌面端显示在左侧，移动端显示在顶部 */}
                 <div className="lg:fixed lg:left-0 lg:top-0 lg:w-1/2 lg:h-screen h-[40vh] w-full relative">
@@ -226,7 +227,8 @@ export default function Home() {
 
                 {/* 内容区域 - 在桌面端显示在右侧，移动端显示在下方 */}
                 <div className="lg:w-1/2 lg:ml-auto w-full px-4 lg:px-0 relative">
-                    <section id="introduction" className="min-h-screen flex items-center py-10 lg:p-10 mt-[40vh] lg:mt-0">
+                    <section id="introduction"
+                             className="min-h-screen flex items-center py-10 lg:p-10 mt-[40vh] lg:mt-0">
                         <div className="w-full">
                             <div className="mb-8">
                                 <h2 className="text-lg lg:text-xl mb-2 text-[#ff9933] font-bold">
@@ -240,7 +242,8 @@ export default function Home() {
                                 <p className="text-base lg:text-lg">{t('intro.description1')}</p>
                                 <p className="text-base lg:text-lg">{t('intro.description2')}</p>
                             </div>
-                            <button className="mt-8 bg-[#ff9933] text-white px-6 lg:px-8 py-3 rounded-full text-base lg:text-lg hover:bg-[#ff8000] transition-colors">
+                            <button
+                                className="mt-8 bg-[#ff9933] text-white px-6 lg:px-8 py-3 rounded-full text-base lg:text-lg hover:bg-[#ff8000] transition-colors">
                                 {t('intro.button')}
                             </button>
                         </div>
@@ -294,6 +297,7 @@ export default function Home() {
                     </section>
                 </div>
             </div>
-        </>
+            <Footer />
+        </div>
     );
 }

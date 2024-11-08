@@ -58,6 +58,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 interface NavigationProps {
     currentSection: string;
@@ -87,7 +88,24 @@ export default function Navigation({ currentSection }: NavigationProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <div className="flex items-center">
+                    {/*<div className="flex items-center">*/}
+                    {/*    <span className="text-[#ff9933] font-bold text-xl">*/}
+                    {/*        {t('nav.title')}*/}
+                    {/*    </span>*/}
+                    {/*</div>*/}
+
+                    {/* Logo and Title */}
+                    <div className="flex items-center space-x-3">
+                        <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                            <Image
+                                src="/images/logo.jpg"
+                                alt="Forward with Her Logo"
+                                fill
+                                sizes="32px"
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
                         <span className="text-[#ff9933] font-bold text-xl">
                             {t('nav.title')}
                         </span>

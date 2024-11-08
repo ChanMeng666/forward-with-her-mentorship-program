@@ -19,6 +19,16 @@ export default function DynamicHead() {
 
         // 更新语言属性
         document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
+
+        // 确保 favicon 始终存在
+        const existingFavicon = document.querySelector('link[rel="icon"]');
+        if (!existingFavicon) {
+            const favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.href = '/images/logo.jpg';
+            document.head.appendChild(favicon);
+        }
+
     }, [language]);
 
     return null;

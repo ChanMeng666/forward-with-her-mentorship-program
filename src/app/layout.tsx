@@ -7,6 +7,15 @@ import { metadata as siteMetadata } from '@/config/metadata';
 export const metadata: Metadata = {
     title: siteMetadata.en.title,
     description: siteMetadata.en.description,
+    icons: {
+        icon: [
+            { url: '/images/logo.jpg' }
+        ],
+        shortcut: ['/images/logo.jpg'],
+        apple: [
+            { url: '/images/logo.jpg' }
+        ]
+    }
 };
 
 export default function RootLayout({
