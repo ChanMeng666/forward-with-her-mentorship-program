@@ -16,7 +16,7 @@ export default function Home() {
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
-            const sections = ['introduction', 'gallery', 'schedule', 'requirements']; // Added 'gallery'
+            const sections = ['introduction', 'gallery', 'schedule', 'requirements'];
             for (const section of sections) {
                 const element = document.getElementById(section);
                 if (element) {
@@ -47,10 +47,11 @@ export default function Home() {
 
     return (
         <>
-            <Navigation
-                currentSection={currentSection}
-                onSectionChange={setCurrentSection}
-            />
+            {/*<Navigation*/}
+            {/*    currentSection={currentSection}*/}
+            {/*    onSectionChange={setCurrentSection}*/}
+            {/*/>*/}
+            <Navigation currentSection={currentSection} />
             <div ref={containerRef} className="min-h-screen bg-[#fff5e6] pt-16">
                 <AnimatedThreeScene
                     scrollY={scrollY}

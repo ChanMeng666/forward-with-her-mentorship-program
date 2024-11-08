@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SplineLoader from '@splinetool/loader';
@@ -33,10 +33,11 @@ export default function AnimatedThreeScene({
     const timeRef = useRef(0);
 
     // 为每个部分定义目标旋转角度和动画参数
-    const sectionAnimations: Record<string, {
-        rotation: THREE.Euler;
-        animation: AnimationState;
-    }> = {
+    
+    // const sectionAnimations: Record<string, {
+
+    // 使用 useMemo 缓存 sectionAnimations
+    const sectionAnimations = useMemo(() => ({
         'introduction': {
             rotation: new THREE.Euler(0, Math.PI * 1.5, -Math.PI * 0.1),
             animation: {
@@ -69,7 +70,7 @@ export default function AnimatedThreeScene({
                 swaySpeed: 0.001
             }
         }
-    };
+    }), []); // 空依赖数组，因为这些值是常量
 
     // 初始化场景
     useEffect(() => {
