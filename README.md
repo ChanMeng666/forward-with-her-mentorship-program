@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forward with Her Website
 
-## Getting Started
+A modern, responsive website built for the Forward with Her Mentorship Program, featuring interactive 3D animations, bilingual support, and dynamic content presentation.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Interactive 3D Model**: Dynamic 3D scene using Three.js that responds to scroll and section changes
+- **Bilingual Support**: Complete English and Chinese language support with easy switching
+- **Responsive Design**: Fully responsive layout optimized for both desktop and mobile devices
+- **Smooth Animations**: Auto-scrolling gallery and smooth transitions between sections
+- **Modern Tech Stack**: Built with Next.js 15, React, TypeScript, and Tailwind CSS
+
+## 🛠️ Tech Stack
+
+- Next.js 15.0.2
+- React 19
+- TypeScript
+- Three.js 0.149.0
+- Tailwind CSS 3.4.1
+- Spline Tool (for 3D models)
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ChanMeng666/3d-model-viewer.git
+   cd 3d-model-viewer
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open [http://localhost:3000](http://localhost:3000) with your browser**
+
+## 📱 Responsive Design
+
+The website is optimized for various screen sizes:
+- Desktop: Full-width 3D model with side-by-side content
+- Mobile: Stacked layout with optimized 3D model viewing
+- Tablet: Adaptive layout based on screen width
+
+## 🌐 Internationalization
+
+The website supports both English and Chinese languages:
+- Easy language switching via the navigation bar
+- Consistent translations across all sections
+- Dynamic meta content updates based on selected language
+
+## 🎨 Styling
+
+- Custom color scheme with CSS variables
+- Dark mode support
+- Smooth transitions and animations
+- Tailwind CSS utility classes for consistent styling
+
+## 📦 Project Structure
+
+```
+src/
+├── app/                 # Next.js app router
+├── components/          # React components
+├── config/             # Configuration files
+├── contexts/           # React contexts
+└── styles/             # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Feel free to submit issues and enhancement requests.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 License
 
-## Learn More
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-To learn more about Next.js, take a look at the following resources:
+## Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Chan Meng**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- LinkedIn: [chanmeng666](https://www.linkedin.com/in/chanmeng666/)
+- GitHub: [ChanMeng666](https://github.com/ChanMeng666)
