@@ -1,5 +1,6 @@
 <div align="center">
- <h1> <img src="/images/logo.jpg" width="80px"><br/>Forward with Her Website</h1>
+ <img src="/images/logo.jpg" width="80px"><br/>
+ <h1>Forward with Her Website</h1>
  <a href="https://www.linkedin.com/in/chanmeng666" target="_blank"><img alt="" src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" style="vertical-align:center" /></a>
  <img src="https://img.shields.io/github/package-json/v/ChanMeng666/3d-model-viewer?style=flat&color=green"/>
  <img src="https://img.shields.io/github/license/ChanMeng666/3d-model-viewer?style=flat&color=green"/>
