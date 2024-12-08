@@ -9,6 +9,14 @@
 
 A modern, responsive website built for the Forward with Her Mentorship Program, featuring interactive 3D animations, bilingual support, and dynamic content presentation.
 
+![屏幕截图 2024-12-08 174144](https://github.com/user-attachments/assets/f697c730-8908-4451-aafe-41632b027c17)
+
+![屏幕截图 2024-12-08 174242](https://github.com/user-attachments/assets/0b2be901-c507-4f38-a005-017c4bd41d38)
+
+![屏幕截图 2024-12-08 174316](https://github.com/user-attachments/assets/61f4878a-3475-466b-b917-a885f0f4582f)
+
+![屏幕截图 2024-12-08 174439](https://github.com/user-attachments/assets/2d5aaef5-7cbc-491a-9ae4-0ef50a6d59fd)
+
 # Features
 We've got all the essentials needed for a modern mentorship program website!
 
@@ -84,7 +92,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check [iss
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache-2.0 license - see the [LICENSE](LICENSE) file for details.
 
 ## Author
 
