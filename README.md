@@ -744,7 +744,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 [github-contributors-link]: https://github.com/ChanMeng666/forward-with-her-mentorship-program/contributors
 [github-release-link]: https://github.com/ChanMeng666/forward-with-her-mentorship-program/releases
 [pr-welcome-link]: https://github.com/ChanMeng666/forward-with-her-mentorship-program/pulls
-[github-license-link]: https://github.com/ChanMeng666/forward-with-her-mentorship-program/blob/main/LICENSE
+[github-license-link]: https://github.com/ChanMeng666/forward-with-her-mentorship-program/blob/master/LICENSE
 
 <!-- Shield Badges -->
 [github-release-shield]: https://img.shields.io/github/v/release/ChanMeng666/forward-with-her-mentorship-program?color=369eff&labelColor=black&logo=github&style=flat-square
