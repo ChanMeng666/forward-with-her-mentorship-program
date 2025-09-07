@@ -98,7 +98,7 @@ export default function Navigation({ currentSection }: NavigationProps) {
                     <div className="flex items-center space-x-3">
                         <div className="relative w-8 h-8 rounded-full overflow-hidden">
                             <Image
-                                src="/images/logo.jpg"
+                                src="/images/logo.svg"
                                 alt="Forward with Her Logo"
                                 fill
                                 sizes="32px"

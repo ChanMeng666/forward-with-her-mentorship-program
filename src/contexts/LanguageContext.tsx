@@ -46,7 +46,26 @@ export const translations = {
         'requirements.value': '• Agree with project values and enjoy mutual assistance',
         'contact.title': 'Contact Us',
         'contact.email': 'Email: taxingFWH@163.com',
-        'contact.wechat': 'Follow us: WeChat Official Account "Forward with Her Mentorship"'
+        'contact.wechat': 'Follow us: WeChat Official Account "Forward with Her Mentorship"',
+
+        // Footer Section
+        'footer.brand.title': 'Forward with Her',
+        'footer.brand.description': 'Empowering women in technology through mentorship, community, and cutting-edge web experiences',
+        'footer.developer.name': 'Chan Meng',
+        'footer.developer.title': 'Developer',
+        'footer.developer.description': 'Specialized in modern web development, 3D experiences, and performance optimization',
+        'footer.services.title': 'Services',
+        'footer.services.webdev': 'Custom Web Development',
+        'footer.services.3d': '3D Interactive Experiences',
+        'footer.services.design': 'UI/UX Design',
+        'footer.services.optimization': 'Performance Optimization',
+        'footer.contact.title': 'Get in Touch',
+        'footer.contact.email': 'chanmeng.dev@gmail.com',
+        'footer.contact.portfolio': 'Portfolio & Projects',
+        'footer.copyright': 'All rights reserved',
+        'footer.opensource': 'Open Source',
+        'footer.crafted': 'Crafted with',
+        'footer.using': 'using Next.js & Three.js'
     },
     zh: {
         // Navigation
@@ -83,7 +102,26 @@ export const translations = {
         'requirements.value': '• 认同项目理念，乐于互助交流',
         'contact.title': '联系我们',
         'contact.email': '邮箱：taxingFWH@163.com',
-        'contact.wechat': '关注我们：微信公众号「她行Mentorship」'
+        'contact.wechat': '关注我们：微信公众号「她行Mentorship」',
+
+        // Footer Section
+        'footer.brand.title': '她行 Forward with Her',
+        'footer.brand.description': '通过导师制度、社区建设和前沿网络体验赋能科技领域女性',
+        'footer.developer.name': 'Chan Meng',
+        'footer.developer.title': '开发者',
+        'footer.developer.description': '专注于现代化网页开发、3D交互体验和性能优化',
+        'footer.services.title': '服务项目',
+        'footer.services.webdev': '定制网站开发',
+        'footer.services.3d': '3D交互体验',
+        'footer.services.design': 'UI/UX 设计',
+        'footer.services.optimization': '性能优化',
+        'footer.contact.title': '联系方式',
+        'footer.contact.email': 'chanmeng.dev@gmail.com',
+        'footer.contact.portfolio': '作品集和项目',
+        'footer.copyright': '版权所有',
+        'footer.opensource': '开源项目',
+        'footer.crafted': '用心制作',
+        'footer.using': '基于 Next.js 和 Three.js'
     }
 };
 

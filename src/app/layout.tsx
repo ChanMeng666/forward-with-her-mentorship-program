@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     description: siteMetadata.en.description,
     icons: {
         icon: [
-            { url: '/images/logo.jpg' }
+            { url: '/images/logo.svg' }
         ],
-        shortcut: ['/images/logo.jpg'],
+        shortcut: ['/images/logo.svg'],
         apple: [
-            { url: '/images/logo.jpg' }
+            { url: '/images/logo.svg' }
         ]
     }
 };
