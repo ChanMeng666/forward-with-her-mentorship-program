@@ -19,7 +19,7 @@ One-click **FREE** deployment of your mentorship community platform.
 <!-- SHIELD GROUP -->
 
 [![][github-release-shield]][github-release-link]
-[![][vercel-shield]][vercel-link]
+[![][cloudflare-shield]][cloudflare-link]
 [![][github-stars-shield]][github-stars-link]
 [![][github-forks-shield]][github-forks-link]
 [![][github-issues-shield]][github-issues-link]
@@ -250,8 +250,8 @@ Beyond the core features, this project includes:
         <br>Tailwind CSS
       </td>
       <td align="center" width="96">
-        <img src="https://cdn.simpleicons.org/vercel" width="48" height="48" alt="Vercel" />
-        <br>Vercel
+        <img src="https://cdn.simpleicons.org/cloudflarepages" width="48" height="48" alt="Cloudflare Pages" />
+        <br>Cloudflare Pages
       </td>
     </tr>
   </table>
@@ -311,7 +311,7 @@ graph TB
     subgraph "Build & Deploy"
         N[TypeScript Compiler]
         O[Next.js Build]
-        P[Vercel Deployment]
+        P[Cloudflare Pages Deployment]
     end
     
     A --> N
@@ -460,18 +460,21 @@ npm run lint
 
 ### `A` Cloud Deployment
 
-**Vercel (Recommended)**
+**Cloudflare Pages (Recommended)**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FChanMeng666%2Fforward-with-her-mentorship-program)
+Deploy via Cloudflare Pages:
+```bash
+npm run deploy
+```
 
 **Manual Deployment:**
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
+# Install Wrangler CLI
+npm i -g wrangler
 
-# Deploy to Vercel
-vercel --prod
+# Deploy to Cloudflare Pages
+wrangler pages deploy out --project-name=forward-with-her-mentorship-program
 ```
 
 **Other Platforms:**
@@ -731,7 +734,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 [back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
 
 <!-- Project Links -->
-[project-link]: https://forward-with-her.vercel.app/
+[project-link]: https://forward-with-her-mentorship-program.pages.dev/
 [github-repo]: https://github.com/ChanMeng666/forward-with-her-mentorship-program
 [docs]: https://github.com/ChanMeng666/forward-with-her-mentorship-program#readme
 [docs-3d-features]: https://github.com/ChanMeng666/forward-with-her-mentorship-program#1-interactive-3d-animations
@@ -748,7 +751,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 <!-- Shield Badges -->
 [github-release-shield]: https://img.shields.io/github/v/release/ChanMeng666/forward-with-her-mentorship-program?color=369eff&labelColor=black&logo=github&style=flat-square
-[vercel-shield]: https://img.shields.io/badge/vercel-online-55b467?labelColor=black&logo=vercel&style=flat-square
+[cloudflare-shield]: https://img.shields.io/badge/cloudflare-online-55b467?labelColor=black&logo=cloudflarepages&style=flat-square
 [github-stars-shield]: https://img.shields.io/github/stars/ChanMeng666/forward-with-her-mentorship-program?color=ffcb47&labelColor=black&style=flat-square
 [github-forks-shield]: https://img.shields.io/github/forks/ChanMeng666/forward-with-her-mentorship-program?color=8ae8ff&labelColor=black&style=flat-square
 [github-issues-shield]: https://img.shields.io/github/issues/ChanMeng666/forward-with-her-mentorship-program?color=ff80eb&labelColor=black&style=flat-square
@@ -756,7 +759,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 [pr-welcome-shield]: https://img.shields.io/badge/🤝_PRs_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
 
 <!-- Badge Variants -->
-[demo-shield-badge]: https://img.shields.io/badge/TRY%20DEMO-ONLINE-55b467?labelColor=black&logo=vercel&style=for-the-badge
+[demo-shield-badge]: https://img.shields.io/badge/TRY%20DEMO-ONLINE-55b467?labelColor=black&logo=cloudflarepages&style=for-the-badge
 [github-shield-badge]: https://img.shields.io/badge/VIEW%20CODE-GITHUB-181717?labelColor=black&logo=github&style=for-the-badge
 
 <!-- Social Share -->
@@ -773,5 +776,5 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 [share-linkedin-shield]: https://img.shields.io/badge/-share%20on%20linkedin-black?labelColor=black&logo=linkedin&logoColor=white&style=flat-square
 
 <!-- Deployment Links -->
-[vercel-link]: https://forward-with-her.vercel.app/
+[cloudflare-link]: https://forward-with-her-mentorship-program.pages.dev/
 </rewritten_file>
