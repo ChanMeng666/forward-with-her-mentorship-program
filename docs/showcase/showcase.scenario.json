@@ -1,0 +1,85 @@
+{
+  "project": "forward-with-her-mentorship-program",
+  "baseUrl": "https://forward-with-her-mentorship-program.pages.dev",
+  "outDir": "docs/showcase",
+
+  "viewports": {
+    "desktop": { "width": 1280, "height": 800, "deviceScaleFactor": 2 },
+    "mobile":  { "width": 390,  "height": 844,  "deviceScaleFactor": 3, "isMobile": true }
+  },
+
+  "pages": [
+    {
+      "label": "hero",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 7000 }
+      ]
+    },
+    {
+      "label": "gallery",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 6000 },
+        { "action": "scroll", "by": 820 },
+        { "action": "wait", "ms": 1500 }
+      ]
+    },
+    {
+      "label": "schedule",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 6000 },
+        { "action": "scroll", "by": 1640 },
+        { "action": "wait", "ms": 1500 }
+      ]
+    },
+    {
+      "label": "requirements",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 6000 },
+        { "action": "scroll", "by": 2450 },
+        { "action": "wait", "ms": 1500 }
+      ]
+    },
+    {
+      "label": "mobile-hero",
+      "url": "/",
+      "viewport": "mobile",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 6000 }
+      ]
+    }
+  ],
+
+  "demo": {
+    "size": { "width": 1280, "height": 720 },
+    "stepPauseMs": 400,
+    "steps": [
+      { "action": "goto", "url": "/", "timeoutMs": 30000 },
+      { "action": "wait", "ms": 7000 },
+      { "action": "scroll", "by": 300 },
+      { "action": "wait", "ms": 1500 },
+      { "action": "scroll", "by": 300 },
+      { "action": "wait", "ms": 1500 },
+      { "action": "scroll", "by": 250 },
+      { "action": "wait", "ms": 2000 },
+      { "action": "scroll", "by": 820 },
+      { "action": "wait", "ms": 2500 },
+      { "action": "scroll", "by": 820 },
+      { "action": "wait", "ms": 2500 },
+      { "action": "scroll", "by": 820 },
+      { "action": "wait", "ms": 2500 }
+    ]
+  }
+}
